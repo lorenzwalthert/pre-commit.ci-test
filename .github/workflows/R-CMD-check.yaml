@@ -10,6 +10,7 @@ name: R-CMD-check
 
 jobs:
   R-CMD-check:
+    if: github.event.check_suite.app.name == 'pre-commit ci' && github.event.check_suite.conclusion == 'success'
     runs-on: ubuntu-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
